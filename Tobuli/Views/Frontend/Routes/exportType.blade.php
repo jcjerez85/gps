@@ -1,0 +1,2 @@
+{!! Form::label('routes', trans('validation.attributes.routes').':') !!}
+{!! Form::select('routes[]', $items, $selected, ['class' => 'form-control', 'multiple' => 'multiple', 'data-live-search' => 'true']) !!}

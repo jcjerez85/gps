@@ -1,0 +1,1 @@
+@include('Frontend.Reports.partials.type_19')
