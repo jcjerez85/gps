@@ -1,0 +1,17 @@
+{
+    "name": "webtopay/libwebtopay",
+    "description": "PHP Library for Paysera payment gateway integration",
+    "license": "LGPL-3.0",
+    "authors": [
+        {
+            "name": "Paysera",
+            "homepage": "https://www.paysera.com/"
+        }
+    ],
+    "autoload": {
+        "classmap": ["src/"]
+    },
+    "require": {
+        "php": "^5.5 || ^7.0 || ^8.0"
+    }
+}
