@@ -1,0 +1,64 @@
+#conversations {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 999999;
+
+  .conversation {
+    width: 250px;
+    margin-right: 10px;
+    display: inline-block;
+  }
+}
+
+#conversation {
+  .close {
+    display: none;
+  }
+
+  .messages {
+    max-height: 350px;
+  }
+}
+
+
+.conversation {
+  .panel {
+    margin-bottom: 0;
+  }
+}
+
+.messages {
+  padding: 15px;
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style: none;
+
+  max-height: 250px;
+  min-height: 250px;
+  overflow-y: scroll;
+  @extend .scrollbar;
+
+  .message {
+    margin-bottom: 10px;
+    @include clearfix();
+
+    .text {
+      display: inline-block;
+      padding: 5px 10px;
+      background: $color-bg-200;
+      color: $color-text-100;
+      @include borderRadius(20px);
+    }
+    .author {
+      display: block;
+      padding-left: 10px;
+      font-size: $font-size-smaller;
+      color: $color-text-600;
+    }
+
+    &.me {
+      text-align: right;
+    }
+  }
+}

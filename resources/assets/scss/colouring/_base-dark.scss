@@ -1,0 +1,51 @@
+$color-bg-000: #333333; //#ffffff;
+$color-bg-100: #222222;  //#f9f9f9;
+$color-bg-200: #444444; //#eeeeee;
+$color-bg-300: #363636; //#dddddd;
+
+$color-text-000: #ffffff;
+$color-text-100: #dddddd; //#202020; //darkest
+$color-text-200: #aaaaaa; //#555555; //darker
+$color-text-300: #aaaaaa; //#595959; //dark
+$color-text-400: #666666; //normal
+$color-text-500: #777777; //#777777; //ligth
+$color-text-600: #999999; //ligther
+$color-text-700: #aaaaaa; //
+$color-text-800: #555555; //#cccccc;
+$color-text-900: #444444; //#dddddd;
+
+$color-border-100: #363636; //#d9d9d9;
+$color-border-200: #333333; //#d9d9d9;
+$color-shadow:     #ffffff; //#cccccc;
+
+/*
+$base-bg:                #ffffff !default;
+$base-bg-darker:         #eeeeee !default;
+$base-bg-dark:           #f9f9f9 !default;
+$base-border:            #d9d9d9 !default;
+$base-color:             #202020 !default;
+*/
+
+$gray-base:              #dddddd; //#202020;
+$gray-darker:            #aaaaaa; //#555555;
+$gray-dark:              #777777; //#777777;
+$gray:                   #363636; //#dddddd;
+$gray-light:             #444444; //#eeeeee;
+$gray-lighter:           #222222; //#f9f9f9;
+
+$close-color:            #fff !default;
+$close-text-shadow:      0 1px 0 #000 !default;
+
+$body-bg:                     $color-bg-200;
+$checkbox-background-color:   $color-bg-100 !default;
+$navbar-main-icon-color:      $color-text-600 !default;
+$panel-default-text:          $color-text-100 !default;
+$widget-content-color:        $color-text-300 !default;
+$widget-content-icon-color:   $color-text-500 !default;
+$widget-col-background-color: $color-bg-100 !default;
+
+$input-bg-disabled:           $color-bg-200 !default;
+$input-color-focus:           $color-text-000 !default;
+$input-border-focus:          $color-border-100 !default;
+$input-bg-focus:              #111111 !default;
+$input-color-placeholder:     $color-text-500 !default;

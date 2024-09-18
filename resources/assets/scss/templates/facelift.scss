@@ -1,0 +1,54 @@
+@import '../colouring/main-blue';
+@import '../colouring/base-ligth';
+
+//input border #DFDFDF
+//input bg #F6F8FA
+//input placeholder color #A2ABB9
+//input color #0D0D0D
+
+//hr color #CFCFCF
+
+//** borders
+$border-radius-base:                          6px !default;
+$border-radius-large:                         8px !default;
+$border-radius-small:                         4px !default;
+
+$checkbox-size:                               20px !default;
+$checkbox-font-size:                          11px !default;
+$checkbox-padding:                            4px 3px;
+
+
+$input-label-font-weight:                     bold !default;
+$input-border:                                #cccccc !default;
+$input-border-focus:                          $brand-primary !default;
+
+//$navbar-main-weight:                          bold !default;
+
+$nav-link-bg:                                 #ffffff !default;
+$nav-link-hover-bg:                           #EBF0F4 !default;
+$nav-tabs-weight:                             bold !default;
+$nav-tabs-bg:                                 #ffffff !default;
+$nav-tabs-border-radius:                      0;
+$nav-tabs-active-link-hover-color:            $brand-primary !default;
+
+$btn-font-weight:                             bold !default;
+$btn-default-color:                           $brand-primary !default;
+$btn-default-bg:                              #ffffff !default;
+$btn-default-border:                          $brand-primary !default;
+
+$sidebar-top-space:                           42px !default;
+$sidebar-padding-horizontal:                  8px !default;
+$sidebar-padding-vertical:                    8px !default;
+$sidebar-padding:                             $sidebar-padding-vertical $sidebar-padding-horizontal !default;
+$sidebar-tab-header-padding:                  $sidebar-padding !default;
+$sidebar-tab-body-padding:                    0 $sidebar-padding-horizontal !default;
+$sidebar-tab-footer-padding:                  $sidebar-padding !default;
+
+$group-padding-horizontal:                    12px !default;
+$group-heading-padding-vertical:              12px !default;
+$group-heading-padding-horizontal:            $group-padding-horizontal !default;
+$group-item-padding-vertical:                 12px !default;
+$group-item-padding-horizontal:               $group-padding-horizontal !default;
+
+@import '../index';
+@import '../layout/facelift';

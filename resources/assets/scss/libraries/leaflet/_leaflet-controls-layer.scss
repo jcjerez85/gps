@@ -1,0 +1,26 @@
+.leaflet-control-layers {
+	@extend .droparrow;
+	@extend .dropright;
+	position: relative;
+
+	.leaflet-control-layers-list {
+		display: none;
+		@extend .dropdown-menu;
+	}
+	label {
+		display: block;
+		margin: 0;
+
+		@include checkbox('div', 'span');
+		@include checkbox-variant('div', $brand-primary, 'span');
+
+		div {
+			padding: $dropdown-padding-vertical $dropdown-padding-horizontal;
+		}
+	}
+}
+.leaflet-control-layers-expanded {
+	.leaflet-control-layers-list {
+		display: block;
+	}
+}

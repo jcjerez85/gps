@@ -1,0 +1,155 @@
+.modal-scrollable {
+  position: relative;
+}
+
+.modal-content{
+  background-color: $modal-content-bg;
+}
+
+.modal-header {
+  background: $modal-header-bg;
+
+  .close {
+    font-size: 25px;
+    margin-top: -3px;
+  }
+}
+.modal-title {
+  .icon {
+    vertical-align: top;
+    color: $brand-primary;
+  }
+}
+.modal-body {
+  > .nav {
+    margin: -($modal-inner-padding);
+    margin-bottom: $modal-inner-padding;
+  }
+
+  &.no-padding {
+    padding: 0;
+  }
+}
+.modal-footer {
+  background: $modal-footer-bg;
+  text-align: left;
+}
+
+$modal-md: 760px;
+
+@media (min-width: $screen-sm-min) {
+  .modal-md { width: $modal-md; }
+}
+
+.modal-full {
+  width: auto;
+  margin: 10px;
+}
+
+.modal {
+  &.fade .modal-dialog {
+    -webkit-transform: none;
+        -ms-transform: none;
+         -o-transform: none;
+            transform: none;
+  }
+  &.in .modal-dialog {
+    -webkit-transform: none;
+        -ms-transform: none;
+         -o-transform: none;
+            transform: none;
+  }
+}
+
+.modal-popup {
+
+  position: fixed;
+
+  &.center {
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+         -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+  }
+  &.top_left {
+    top:-1px;
+    left: 0;
+    margin-left: 20px;
+  }
+  &.top_right {
+    top:-1px;
+    right: 0;
+    margin-right: 20px;
+  }
+  &.bottom_left {
+    bottom:-1px;
+    left: 0;
+    margin-left: 20px;
+  }
+  &.bottom_right {
+    bottom:-1px;
+    right: 0;
+    margin-right: 20px;
+  }
+
+  .modal-dialog {
+    margin-bottom: 0;
+    margin-top: 0;
+
+    width: auto;
+    min-width: 300px;
+    max-width: 100%;
+  }
+
+  .modal-content{
+    //background-color: $modal-header-bg;
+
+    > .close {
+      margin-top: 0;
+      margin-right: 3px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 1;
+      opacity: 0.9;
+
+      font-weight: 300;
+      font-size: 40px;
+      color: $color-text-800;
+    }
+  }
+
+  .modal-header {
+    //background-color: $modal-content-bg;
+    padding: $modal-title-padding $modal-title-padding*2;
+    border-bottom: 1px solid $color-border-100;
+
+    .close {
+      margin-top: 0;
+      margin-right: 3px;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 0;
+    }
+  }
+
+  .modal-body {
+    padding: $modal-inner-padding $modal-inner-padding*2;
+  }
+
+}
+
+.dashboard {
+  .modal-content {
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+  .modal-header {
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+}

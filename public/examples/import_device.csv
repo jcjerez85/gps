@@ -1,0 +1,4 @@
+name;imei;icon_id;users;timezone;fuel_measurement_id;fuel_quantity;fuel_price;sim_number;device_model;plate_number;vin;registration_number;object_owner;additional_notes;expiration_date;tail_length;min_moving_speed;min_fuel_fillings;min_fuel_thefts;gprs_templates_only;icon_moving;icon_stopped;icon_offline;icon_engine;
+Device name 1;1111111111;;;;;;;;;;;;;;;;;;;;;;;;
+Device name 2;1111111112;10;admin@yourdomain.com;+2:00;;;;11111111111;ABC;54234;462466;;;;;;6;;;1;green;orange;black;blue;
+Device name 3;1111111113;10;admin@yourdomain.com,user@example.com;+2:00;1;10;1.21;11111111111;ABC;54234;462466;;;;2017-12-10;3;6;10;10;0;green;yellow;red;blue;

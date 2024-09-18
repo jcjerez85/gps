@@ -1,0 +1,144 @@
+<?php namespace Tobuli\Reports\Reports;
+
+use Formatter;
+use Tobuli\Reports\DeviceReport;
+
+class LoadReport extends DeviceReport
+{
+    const TYPE_ID = 37;
+
+    public function typeID()
+    {
+        return self::TYPE_ID;
+    }
+
+    public function title()
+    {
+        return trans('front.loading_unloading');
+    }
+
+    protected function processPosition($position, $rows, $totals)
+    {
+        if ( ! isset($this->previous)) {
+            $this->previous = $position;
+            return;
+        }
+
+        $load = $this->sensor->getValue($position->other, false);
+        $previous_load = $this->sensor->getValue($this->previous->other, false);
+
+        if (empty($load) || $load == $previous_load) {
+            $this->previous = $position;
+            return;
+        }
+
+        // record load start
+        if (is_null($this->started_at)) {
+            $this->started_at = $position->time;
+            $this->start_load = $load;
+            $this->previous = $position;
+            return;
+        }
+
+        // wait for x seconds
+        if ((strtotime($position->time) - strtotime($this->started_at)) < 400) {
+            $this->previous = $position;
+            return;
+        }
+
+        $loading = $load > $this->start_load ;
+        $difference = abs($load - $this->start_load );
+        $change_percentage = ($difference / ($loading ? $load : $this->start_load )) * 100;
+
+        // drop the noise if any after x second
+        if ($change_percentage < 10) {
+            $this->started_at = null;
+            $this->start_load  = null;
+            $this->previous = $position;
+            return;
+        }
+
+        // continue loading proccess if device is not moving
+        if ($position->speed <= $this->previous->speed) {
+            $this->previous = $position;
+            return;
+        }
+
+        // drop the noise if no significant load
+        if ($change_percentage < 25) {
+            $this->started_at = null;
+            $this->start_load  = null;
+            $this->previous = $position;
+            return;
+        }
+
+        $loading ? $totals['count_loading']['value']++ : $totals['count_unloading']['value']++;
+        $rows[] = [
+            'state'         => $loading ? 1 : 0,
+            'time'          => Formatter::time()->human($this->started_at),
+            'previous_load' => Formatter::weight()->human($this->start_load),
+            'current_load'  => Formatter::weight()->human($load),
+            'difference'    => Formatter::weight()->human($difference),
+            'location'      => $this->getLocation($position),
+        ];
+
+        $started_at = null;
+        $start_load = null;
+        $this->previous = $position;
+    }
+
+    protected function generateDevice($device)
+    {
+        $this->started_at = null;
+        $this->start_load = null;
+        $this->previous = null;
+        $this->sensor = $device->getSensorByType('load');
+
+        if (is_null($this->sensor))
+            return [
+                'meta'  => $this->getDeviceMeta($device),
+                'error' => dontExist('front.sensor'),
+            ];
+
+        Formatter::weight()->setMeasure($this->sensor->unit_of_measurement);
+
+
+        $rows = [];
+        $totals = [
+            'count_loading' => [
+                ['value' => 0, 'title' => trans('front.total_loading_amount')]
+            ],
+            'count_unloading' => [
+                ['value' => 0, 'title' => trans('front.total_unloading_amount')]
+            ],
+        ];
+
+        $device->positions()
+            ->orderBy('id')
+            ->whereBetween('time', [$this->date_from, $this->date_to])
+            ->chunk(2000,
+            function ($positions) use (& $rows, &$totals) {
+                foreach ($positions as $position) {
+                    $this->processPosition($position, $rows, $totals);
+                }
+            });
+
+        if (empty($rows))
+            return null;
+
+        $meta = $this->getDeviceMeta($device);
+        $meta['sensor'] = [
+            'key' => 'sensor',
+            'title' => trans('front.sensor'),
+            'value' => $this->sensor->name,
+        ];
+
+        return [
+            'meta'       => $meta,
+            'table'      => [
+                'rows' => $rows,
+            ],
+            'totals'     => $totals,
+        ];
+    }
+}

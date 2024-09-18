@@ -1,0 +1,220 @@
+.navbar-default {
+  font-size: $navbar-default-size;
+
+  .navbar-brand {
+    padding: 5px $navbar-padding-horizontal;
+
+    img {
+      max-height: 100%;
+    }
+  }
+
+  .navbar-nav {
+    > li {
+      @include icon-color('> a > .icon', $navbar-default-icon-color);
+    }
+    > li > a .icon {
+      vertical-align: middle;
+      font-size: 1.1em;
+    }
+  }
+}
+
+.coll {
+  &:before {
+    content: ' ';
+    display: block;
+    width: 100%;
+    height: 8px;
+    background-color: $navbar-default-bg;
+
+    position: absolute;
+    top: 0;
+    z-index: 1;
+  }
+
+  .navbar-default {
+    height: 10px;
+    background: transparent;
+
+    .navbar-header {
+      background-color: $navbar-default-bg;
+    }
+    .navbar-brand {
+      background-color: $navbar-default-bg;
+    }
+    .navbar-nav {
+      background-color: $navbar-default-bg;
+
+      > li > a .icon + .text {
+        display: none;
+      }
+    }
+  }
+}
+
+.navbar-main {
+  font-size: $navbar-main-size;
+  font-weight: $navbar-main-weight;
+  background-color: $navbar-main-bg;
+  border-color: $navbar-main-border;
+
+  .navbar-brand {
+    color: $navbar-main-brand-color;
+    &:hover,
+    &:focus {
+      color: $navbar-main-brand-hover-color;
+      background-color: $navbar-main-brand-hover-bg;
+    }
+    padding: 5px $navbar-padding-horizontal;
+
+    img {
+      max-height: 100%;
+    }
+  }
+
+  .navbar-text {
+    color: $navbar-main-color;
+  }
+
+  .navbar-nav {
+    > li {
+      @include icon-color('> a > .icon', $navbar-main-icon-color);
+    }
+    > li > a .icon {
+      vertical-align: middle;
+      font-size: 1.1em;
+    }
+    > li > a {
+      color: $navbar-main-link-color;
+
+      &:hover,
+      &:focus {
+        color: $navbar-main-link-hover-color;
+        background-color: $navbar-main-link-hover-bg;
+      }
+    }
+    > .active > a {
+      &,
+      &:hover,
+      &:focus {
+        color: $navbar-main-link-active-color;
+        background-color: $navbar-main-link-active-bg;
+      }
+    }
+    > .disabled > a {
+      &,
+      &:hover,
+      &:focus {
+        color: $navbar-main-link-disabled-color;
+        background-color: $navbar-main-link-disabled-bg;
+      }
+    }
+  }
+
+  .navbar-toggle {
+    border-color: $navbar-main-toggle-border-color;
+    &:hover,
+    &:focus {
+      background-color: $navbar-main-toggle-hover-bg;
+    }
+    .icon-bar {
+      background-color: $navbar-main-toggle-icon-bar-bg;
+    }
+  }
+
+  .navbar-collapse,
+  .navbar-form {
+    border-color: $navbar-main-border;
+  }
+
+  // Dropdown menu items
+  .navbar-nav {
+    // Remove background color from open dropdown
+    > .open > a {
+      &,
+      &:hover,
+      &:focus {
+        background-color: $navbar-main-link-active-bg;
+        color: $navbar-main-link-active-color;
+      }
+    }
+
+    @media (max-width: $grid-float-breakpoint-max) {
+      // Dropdowns get custom display when collapsed
+      .open .dropdown-menu {
+        > li > a {
+          color: $navbar-main-link-color;
+          &:hover,
+          &:focus {
+            color: $navbar-main-link-hover-color;
+            background-color: $navbar-main-link-hover-bg;
+          }
+        }
+        > .active > a {
+          &,
+          &:hover,
+          &:focus {
+            color: $navbar-main-link-active-color;
+            background-color: $navbar-main-link-active-bg;
+          }
+        }
+        > .disabled > a {
+          &,
+          &:hover,
+          &:focus {
+            color: $navbar-main-link-disabled-color;
+            background-color: $navbar-main-link-disabled-bg;
+          }
+        }
+      }
+    }
+  }
+
+  .navbar-link {
+    color: $navbar-main-link-color;
+    &:hover {
+      color: $navbar-main-link-hover-color;
+    }
+  }
+
+  .btn-link {
+    color: $navbar-main-link-color;
+    &:hover,
+    &:focus {
+      color: $navbar-main-link-hover-color;
+    }
+    &[disabled],
+    fieldset[disabled] & {
+      &:hover,
+      &:focus {
+        color: $navbar-main-link-disabled-color;
+      }
+    }
+  }
+}
+
+.navbar-vertical.navbar {
+  .navbar-collapse {
+    padding: 0;
+    max-height: none;
+  }
+
+  ul {
+    float: none;
+    
+    &:not {
+      display: block;
+    }
+  }
+
+  li {
+    float: none;
+    display: block;
+
+    a {
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
+  }
+}

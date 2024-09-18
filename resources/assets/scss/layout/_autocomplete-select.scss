@@ -1,0 +1,9 @@
+.bootstrap-select {
+  &.hide-picker {
+    height: 0;
+
+    .dropdown-toggle {
+      display: none;
+    }
+  }
+}

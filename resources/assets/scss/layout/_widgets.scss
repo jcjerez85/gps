@@ -1,0 +1,313 @@
+#widgets {
+  @include clearfix();
+  float: right;
+  max-width: 100%;
+
+  .btn-collapse {
+    @extend .collapse-top;
+
+    left: auto;
+    right: 10%;
+  }
+
+  &.collapsed {
+    .widgets-content {
+      height: 0;
+      min-height: 0;
+      overflow: hidden;
+
+      -webkit-transition: all 0.5s ease;
+      -moz-transition: all 0.5s ease;
+      -o-transition: all 0.5s ease;
+      transition: all 0.5s ease;
+    }
+
+    .btn-collapse {
+      @extend .collapsed;
+    }
+  }
+
+  .widgets-content {
+    @extend .scrollbar;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    font-size: 0;
+
+    //height: 165px;
+    background: $widget-content-background-color;
+    color: $widget-content-color;
+  }
+
+  .table {
+    @extend .table-condensed;
+
+    margin-bottom: 0;
+    float: left;
+
+    + .table {
+      margin-left: 5px;
+    }
+
+    tr > td {
+      width: 40%;
+      line-height: 22px;
+      vertical-align: middle;
+
+      @include text-overflow;
+      max-width: 1px;
+
+      + td {
+        @include text-overflow;
+        width: 100%;
+        max-width: 1px;
+      }
+    }
+  }
+
+  .widget {
+    @extend .panel-default;
+
+    &:empty {
+      display: none;
+    }
+
+    height: 100%;
+    border: 1px solid $color-border-100;
+    border-bottom: 0;
+    display: inline-block;
+    vertical-align: bottom;
+
+    + .widget {
+      margin-left: -1px;
+    }
+  }
+
+  .widget-heading {
+    @extend .panel-heading;
+    font-size: 1.1em;
+
+    .widget-actions {
+      float: right;
+    }
+  }
+  .widget-title {
+    @extend .panel-title;
+    .icon {
+      color: $brand-primary;
+      margin-right: 5px;
+      vertical-align: middle;
+    }
+
+    [data-device="status"] {
+      width: 7px; height: 7px;
+    }
+    [data-device="status-text"] {
+      font-size: 0.8em;
+    }
+  }
+
+  .widget-body {
+    @extend .panel-body;
+    @extend .scrollbar;
+
+    padding-top: 5px;
+    padding-bottom: 0;
+
+    height: 126px;
+    //min-height: 125px;
+    //max-height: 126px;
+
+    font-size: $font-size-small;
+
+    overflow: auto;
+
+    > * + .widget-empty {
+      display: none;
+    }
+
+    .table:empty + .widget-empty {
+      display: block;
+    }
+
+    .widget-empty {
+      height: 100%;
+      width: 230px;
+      text-align: center;
+      background: url('../images/no-data.png') right bottom no-repeat;
+
+      > .btn{
+        margin-top: 35px;
+      }
+      > p {
+        padding-top: 35px;
+      }
+    }
+
+    .full-text {
+      white-space: normal;
+    }
+  }
+
+  .widget-driver,
+  .widget-services,
+  .widget-device,
+  .widget-locking,
+  .widget-gprs-command,
+  .widget-recent-events {
+    .table {
+      @extend .fadeIn;
+      @extend .animated;
+
+      width: 260px;
+    }
+  }
+
+  .widget-sensors {
+    .table {
+      @extend .fadeIn;
+      @extend .animated;
+
+      width: 200px;
+
+      tr > td {
+        width: 60%;
+      }
+
+      .icon {
+        font-size: 1.8em;
+        vertical-align: middle;
+        color: $widget-content-icon-color;
+        margin-right: 5px;
+      }
+    }
+  }
+  .widget-streetview {
+    .widget-body {
+      width: auto;
+      padding: 0;
+
+      img {
+        @extend .fadeIn;
+        @extend .animated;
+
+        max-height: 100%;
+      }
+    }
+  }
+
+  .widget-camera {
+    .widget-body {
+      width: auto;
+      padding: 0;
+    }
+
+    .camera-image {
+      display: inline-block;
+      position: relative;
+      padding: 0;
+
+      .name {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        color: #ffffff;
+        background: #000000;
+        font-size: 12px;
+        white-space: initial;
+        padding: 1px 5px;
+        opacity: 0.7;
+      }
+      .image {
+        max-height: 125px;
+      }
+    }
+  }
+
+  .widget-image {
+    position: relative;
+
+    .widget-body {
+      width: 280px;
+      padding: 0;
+      overflow: hidden;
+
+      > .image + .widget-empty {
+        display: none;
+      }
+
+      .widget-empty {
+        display: block;
+      }
+
+      .image {
+        display: block;
+        width: 100%;
+        height: 100%;
+
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      .name {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+
+        color: #ffffff;
+        background: #000000;
+        font-size: 12px;
+        white-space: initial;
+        padding: 1px 5px;
+        opacity: 0.7;
+      }
+    }
+
+  }
+
+  .widget-sensor-graph {
+    .widget-body {
+      width: 280px;
+      padding: 0;
+
+      .sensor-graph {
+        width: 280px;
+        height: 126px;
+      }
+    }
+  }
+
+  .widget-gprs-command {
+    .table {
+      td + td {
+        text-align: right;
+        width: 15%;
+      }
+    }
+  }
+
+  .widget-recent-events {
+    table {
+      tr {
+        text-align: center;
+
+        &[onclick] {
+          text-align: left;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
+
+.widget-col {
+  > div {
+    padding: 5px 10px;
+    background: $widget-col-background-color;
+  }
+}

@@ -1,0 +1,335 @@
+.table .table {
+  background-color: $color-bg-000;
+}
+.table {
+    &.table-list {
+      @extend .table-hover;
+      @extend .table-condensed;
+
+      td[data-editable-field] {
+        position: relative;
+        cursor: pointer;
+
+        &:hover:after {
+          @extend .icon-fa:before;
+          @extend .fa-pencil:before;
+          color: $color-text-700;
+          position: absolute;
+          top: 5px;
+          right: 5px;
+        }
+      }
+
+      > thead,
+      > tbody,
+      > tfoot {
+        > tr {
+          > th,
+          > td {
+            vertical-align: middle;
+            border-top: 1px solid transparent;
+
+            &:first-child {
+              padding-left: $table-condensed-cell-padding * 2;
+            }
+            &:last-child {
+              padding-right: $table-condensed-cell-padding * 2;
+            }
+
+            &.no-data {
+              text-align: center;
+            }
+
+            .btn.icon {
+              color: $color-text-700;
+              &:hover {
+                color: $brand-primary;
+              }
+            }
+          }
+
+          &.row-table-inner {
+            > td {
+              padding: 20px;
+
+              > .loading .middle {
+                vertical-align: top;
+              }
+            }
+          }
+        }
+      }
+      > thead > tr {
+        color: $table-list-head-color;
+        background-color: $table-list-head-bg;
+
+        > th {
+          border-bottom: 2px solid transparent;
+        }
+      }
+
+      //Cols
+      .table-checkbox {
+        width: 1%;
+        white-space: nowrap;
+
+        &:hover {
+          .icon {
+            color: $brand-primary;
+          }
+        }
+      }
+
+      .user-list {
+        @include text-overflow();
+        max-width: 300px;
+      }
+
+      .actions {
+        text-align: right;
+      }
+
+      .sorting,
+      .sorting_desc,
+      .sorting_asc {
+        position: relative;
+        cursor: pointer;
+        padding-right: 15px;
+
+        &:before,
+        &:after {
+          @extend .ico;
+          color: $color-text-800;
+          position: absolute;
+          font-size: 8px;
+          right: 5px;
+        }
+        &:before {
+          top: 2px;
+          @extend .ico-arrow-up:before;
+        }
+        &:after {
+          bottom: 2px;
+          @extend .ico-arrow-down:before;
+        }
+      }
+
+      .pointer {
+        cursor: pointer;
+      }
+      .sorting_asc:before { color: $brand-primary; }
+      .sorting_desc:after { color: $brand-primary; }
+
+      &.sticky-header {
+        > thead {
+          > tr {
+            > th {
+              position: sticky !important;
+              top: 0;
+              z-index: 10;
+              color: $table-list-head-color;
+              background-color: $table-list-head-bg;
+            }
+          }
+        }
+      }
+    }
+
+    > thead {
+      th {
+        font-weight: normal;
+      }
+    }
+
+    > tbody:first-child {
+      > tr:first-child {
+        > th,
+        > td {
+          border-top: 0;
+        }
+      }
+    }
+
+    .checkbox {
+      @extend .checkbox-inline;
+    }
+
+  tr {
+    &.collapse.in {
+      display: table-row;
+    }
+  }
+
+  th,
+  td {
+    &.collapse.in {
+      display: table-cell;
+    }
+  }
+
+  td {
+    .textarea-control {
+      position: relative;
+
+      textarea {
+        padding-right: 30px;
+      }
+
+      .controls-wrapper {
+        position: absolute;
+        right: 30px;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+        font-size: 14px;
+        display: none;
+
+        .fa {
+          display: block;
+          opacity: 0.7;
+
+          &.fa-check {
+            color: green;
+            padding-bottom: 3px;
+          }
+
+          &.fa-times {
+            color: red;
+            padding-top: 3px;
+          }
+
+          &:hover {
+            opacity: 1;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
+
+.table-icon {
+  @include clearfix();
+
+  .item {
+    @extend .col-xs-3;
+    @extend .col-sm-2;
+    @extend .col-md-1;
+
+    float: none;
+    display: inline-block;
+    padding: 10px;
+    margin: -2px;
+    border: 1px solid transparent;
+    text-align: center;
+
+
+    &:hover {
+      border-color:$color-border-100;
+
+      .controls {
+        display: block;
+      }
+    }
+
+    .controls {
+      display: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 1;
+    }
+
+    img {
+      margin: auto;
+      max-width: 100%;
+    }
+  }
+}
+
+[data-table] {
+  > .table-responsive {
+    margin-bottom: 0;
+    min-height: 200px;
+
+    > .table {
+      margin-bottom: 0;
+    }
+  }
+
+  > .table {
+    margin-bottom: 0;
+  }
+}
+
+.table.table-weektime {
+    -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  &.disabled {
+    opacity: 0.5;
+  }
+
+  > thead {
+    border: 1px solid $color-border-100;
+    border-bottom: 0;
+    > tr {
+      > th,
+      > td {
+        padding: 5px;
+        border: 0;
+        font-weight: bold;
+      }
+      th span {
+        margin-left: -20px;
+      }
+    }
+  }
+  > tbody {
+    border: 1px solid $color-border-100;
+    border-top: 0;
+    > tr {
+      > th {
+        padding: 5px;
+        border: 0;
+      }
+      > td {
+        padding: 0;
+        width: 7px;
+        height: 30px;
+        background: $color-bg-100;
+
+        &.ds-selected {
+          background: $brand-primary;
+        }
+
+        &.hour {
+          border-left: 1px solid $color-border-200;
+        }
+        &:nth-child(2) {
+          border-left: 1px solid $color-border-100;
+        }
+        &.quarter {
+          border-left: 1px solid $color-border-100;
+        }
+      }
+    }
+  }
+
+  > tfoot {
+    > tr {
+      > th {
+        padding-right: 0;
+        padding-left: 0;
+        padding-bottom: 0;
+      }
+    }
+  }
+
+}

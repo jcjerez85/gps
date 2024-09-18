@@ -1,0 +1,104 @@
+#dashboard {
+  min-height: calc(100vh - 20px);
+
+  .container {
+    width: 90%;
+  }
+
+  .modal-content {
+    min-height: calc(100vh - 20px);
+    background: $gray;
+  }
+
+  .dashboard-block {
+    &.auto-height {
+      .panel.panel-default {
+        .panel-body {
+          height: auto;
+        }
+      }
+    }
+
+    .panel.panel-default {
+      border: 0;
+
+      .panel-heading {
+        border: 0;
+
+        .panel-title {
+          float: none;
+        }
+      }
+
+      .panel-body {
+        height: 340px;
+        overflow: auto;
+        @extend .scrollbar;
+      }
+    }
+
+    table {
+      .legendColorBox {
+        padding: 5px;
+      }
+      .legendLabel {
+        padding: 5px;
+        font-size: 12px !important;
+        font-weight: bold;
+      }
+    }
+
+    .stat-box {
+      display: block;
+      padding: $alert-padding;
+      margin-bottom: $line-height-computed;
+      border: 1px solid transparent;
+      border-radius: $alert-border-radius;
+      color: $text-color;
+      text-align: center;
+
+      .title { }
+
+      .count {
+        font-weight: bold;
+        font-size: larger;
+      }
+    }
+
+    .link {
+      text-decoration: underline;
+      cursor: pointer;
+
+      a {
+        color: $text-color;
+      }
+    }
+  }
+}
+
+#block_device_overview {
+  .panel-transparent {
+    > .panel-body {
+      padding-top: 0;
+    }
+  }
+}
+
+#dashboard, #setup-form-dashboard {
+  .options-dropdown {
+    margin: 0 15px 0 15px;
+
+    hr {
+      margin-top: 0;
+    }
+  }
+}
+
+#setup-form-dashboard {
+  .dashboard-widget {
+    background: $gray-light;
+    padding: 10px 5px 8px 10px;
+    margin-bottom: 10px;
+    height: 38px;
+  }
+}

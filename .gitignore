@@ -1,0 +1,13 @@
+*.tar
+*.ico
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.tiff
+*.svg
+*.webp
+# Ignore .sql and .gz files
+*.sql
+*.gz

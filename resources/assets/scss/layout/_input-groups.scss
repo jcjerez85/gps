@@ -1,0 +1,25 @@
+$input-group-button-margin: 4px;
+
+.input-group {
+  width: 100%;
+}
+
+.input-group > .input-group-btn {
+  > .btn,
+  > .btn-group,
+  > .form-control.timeselect {
+    margin-left: $input-group-button-margin;
+  }
+
+  > .form-control.timeselect {
+    width: 70px;
+
+    @media (min-width: $grid-float-breakpoint) {
+        width: 90px;
+    }
+
+    &.open {
+      z-index: 3;
+    }
+  }
+}

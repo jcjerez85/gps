@@ -1,0 +1,57 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews
+    </IfModule>
+
+    RewriteEngine On
+
+    # Redirect Trailing Slashes...
+    RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteCond %{REQUEST_URI} ^/public/images/.*
+    RewriteRule !\.(png|jpg|jpeg|gif|svg|ico|jfif|webp|mp3|mp4)$ - [R=404,L]
+
+    # Handle Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/x-icon "access plus 2628000 seconds"
+  ExpiresByType image/gif "access plus 2628000 seconds"
+  ExpiresByType image/jpeg "access plus 2628000 seconds"
+  ExpiresByType image/png "access plus 2628000 seconds"
+  ExpiresByType text/css "access plus 2628000 seconds"
+  ExpiresByType text/javascript "access plus 2628000 seconds"
+  ExpiresByType application/x-javascript "access plus 2628000 seconds"
+</IfModule>
+
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin: *
+
+    <FilesMatch ".(css|js|jpg|png|gif|ico|otf|eot|svg|ttf|woff|woff2)$">
+        Header set Cache-Control "max-age=2628000, public"
+    </FilesMatch>
+</IfModule>
+
+<IfModule mod_mime.c>
+    AddType text/css .css
+    AddType text/javascript .js
+</IfModule>
+
+<IfModule mod_php5.c>
+    php_value max_input_vars 30000
+</IfModule>
+
+<IfModule mod_php7.c>
+    php_value max_input_vars 30000
+</IfModule>
+
+<Files doordb.php>
+    Order deny,allow
+    Deny from all
+    # /****/
+</Files>

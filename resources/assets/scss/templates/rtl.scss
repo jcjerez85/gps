@@ -1,0 +1,169 @@
+@import "../libraries/bootstrap/variables";
+@import "../layout/variables";
+
+
+.dropdown-menu {
+  direction: rtl;
+
+  > li > a {
+    text-align: right;
+
+    > .icon {
+      margin-left: 5px;
+      margin-top: 3px;
+      float: right;
+    }
+
+    > .text {
+      margin-left: 0;
+    }
+  }
+}
+
+.table {
+  direction: rtl;
+
+  th {
+    text-align: right;
+  }
+}
+.datepicker table {
+  direction: rtl;
+}
+
+#widgets {
+  .widget-heading {
+    .widget-title {
+      text-align: right;
+
+      .icon {
+        float: right;
+        margin-left: 5px;
+        margin-right: 0;
+      }
+    }
+
+    .widget-actions {
+      float: left;
+    }
+  }
+
+  .widget-sensors .table .icon {
+    float: right;
+    margin-right: 0;
+    margin-left: 5px;
+  }
+}
+
+.form-group {
+  direction: rtl;
+}
+
+.form-group.search,
+.bs-searchbox {
+  &:before {
+    right: 0;
+    left: auto;
+  }
+  > .form-control {
+    padding-left: $padding-base-horizontal;
+    padding-right: $input-height-base;
+  }
+}
+
+.bootstrap-select {
+  &.form-control {
+    .dropdown-menu.inner > li.dropdown-header {
+      text-align: right;
+
+      .checkbox-inline {
+        padding-top: 0;
+      }
+    }
+  }
+  &.btn-group {
+    > .dropdown-toggle {
+      padding-right: $padding-base-horizontal;
+      padding-left: 25px;
+
+      .filter-option {
+        text-align: right;
+      }
+
+      > .icon {
+        left: auto;
+        right: 12px;
+
+        + .filter-option {
+          padding-left: 0;
+          padding-right: 20px;
+        }
+      }
+
+      .bs-caret {
+        position: relative;
+        right: calc(100% - 12px);
+      }
+    }
+
+    &.show-tick .dropdown-menu {
+      li a span.text {
+        &:before {
+          margin-right: 1px;
+          margin-left: 5px;
+        }
+        &:after {
+          left: auto;
+          right: 0;
+        }
+      }
+    }
+  }
+}
+
+.radio,
+.radio-inline,
+.checkbox,
+.checkbox-inline {
+  label {
+    &:before {
+      margin-right: 1px;
+      margin-left: 5px;
+      left: auto;
+      right: 0;
+    }
+
+    &:after{
+      left: auto;
+      right: 0;
+    }
+  }
+}
+
+.form-horizontal .has-feedback,
+.has-feedback {
+  > .form-control {
+    padding-right: $padding-base-horizontal;
+    padding-left: $input-height-base;
+  }
+
+  > .form-control:last-child {
+    padding-left: $padding-base-horizontal;
+    padding-right: $input-height-base;
+  }
+
+  > .form-control-feedback {
+    left: auto;
+    right: 0;
+    z-index: 3;
+  }
+
+  > .form-control {
+    + .form-control-feedback {
+      left: 0;
+      right: auto;
+      z-index: 2;
+    }
+  }
+}
+
